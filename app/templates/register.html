@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1>Customer Registration</h1>
+
+    <!-- Flash messages (feedback to the user) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, msg in messages %}
+            <li><strong>{{ category }}:</strong> {{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('auth.register_submit') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <label>Password</label><br />
+      <input name="password" type="password" required /><br /><br />
+
+      <label>Confirm Password</label><br />
+      <input name="confirm_password" type="password" required /><br /><br />
+
+      <label>Confirm Password</label><br />
+      <input name="confirm_password" type="password" required /><br /><br />
+
+      <label>Name</label><br />
+      <input name="name" type="text" required /><br /><br />
+
+      <label>Surname</label><br />
+      <input name="surname" type="text" required /><br /><br />
+
+      <label>TCKN</label><br />
+      <input name="tckn" type="text" maxlength="11" required /><br /><br />
+
+      <label>Phone</label><br />
+      <input name="phone" type="text" required /><br /><br />
+
+      <label>Email</label><br />
+      <input name="email" type="email" required /><br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
