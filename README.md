@@ -1,4 +1,4 @@
-# Digiturk Entry System
+# Customer Entry System
 
 This project is a simple customer registration system built with Flask.
 
