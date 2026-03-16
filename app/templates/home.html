@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Customer Entry System{% endblock %}
+
+{% block content %}
+    <h1>Welcome</h1>
+    <p class="subtitle">
+        Secure customer registration and login management for the Customer Entry System.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+        <a href="{{ url_for('auth.register_form') }}" style="text-decoration: none;">
+            <button type="button" class="btn">Create Account</button>
+        </a>
+
+        <a href="{{ url_for('auth.login_form') }}" style="text-decoration: none;">
+            <button
+                type="button"
+                class="btn"
+                style="background: white; color: #0b5ed7; border: 2px solid #0b5ed7;"
+            >
+                Login
+            </button>
+        </a>
+    </div>
+
+    <div style="margin-top: 24px; text-align: center; color: #6b7280; font-size: 14px; line-height: 1.6;">
+        <p>Features included in this project:</p>
+        <p>Customer registration, secure login, CSRF protection, password hashing, and input validation.</p>
+    </div>
+{% endblock %}

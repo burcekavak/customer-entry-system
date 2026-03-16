@@ -1,51 +1,97 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Register</title>
-  </head>
-  <body>
-    <h1>Customer Registration</h1>
+{% extends "base.html" %}
 
-    <!-- Flash messages (feedback to the user) -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <ul>
-          {% for category, msg in messages %}
-            <li><strong>{{ category }}:</strong> {{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+{% block title %}Register | Customer Entry System{% endblock %}
 
-    <form method="post" action="{{ url_for('auth.register_submit') }}">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{% block content %}
+    <h1>Create Account</h1>
+    <p class="subtitle">Fill in the form below to register a new customer account.</p>
 
-      <label>Password</label><br />
-      <input name="password" type="password" required /><br /><br />
+    <form method="POST" action="{{ url_for('auth.register_submit') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-      <label>Confirm Password</label><br />
-      <input name="confirm_password" type="password" required /><br /><br />
+        <div class="form-group">
+            <label for="name">First Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter first name"
+                required
+            >
+        </div>
 
-      <label>Confirm Password</label><br />
-      <input name="confirm_password" type="password" required /><br /><br />
+        <div class="form-group">
+            <label for="surname">Last Name</label>
+            <input
+                type="text"
+                id="surname"
+                name="surname"
+                placeholder="Enter last name"
+                required
+            >
+        </div>
 
-      <label>Name</label><br />
-      <input name="name" type="text" required /><br /><br />
+        <div class="form-group">
+            <label for="tckn">TCKN</label>
+            <input
+                type="text"
+                id="tckn"
+                name="tckn"
+                placeholder="Enter 11-digit TCKN"
+                maxlength="11"
+                required
+            >
+        </div>
 
-      <label>Surname</label><br />
-      <input name="surname" type="text" required /><br /><br />
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Enter phone number"
+                required
+            >
+        </div>
 
-      <label>TCKN</label><br />
-      <input name="tckn" type="text" maxlength="11" required /><br /><br />
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter email address"
+                required
+            >
+        </div>
 
-      <label>Phone</label><br />
-      <input name="phone" type="text" required /><br /><br />
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+        </div>
 
-      <label>Email</label><br />
-      <input name="email" type="email" required /><br /><br />
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Re-enter password"
+                required
+            >
+        </div>
 
-      <button type="submit">Register</button>
+        <button type="submit" class="btn">Register</button>
     </form>
-  </body>
-</html>
+
+    <p class="bottom-text">
+        Already have an account?
+        <a href="{{ url_for('auth.login_form') }}">Login here</a>
+    </p>
+{% endblock %}

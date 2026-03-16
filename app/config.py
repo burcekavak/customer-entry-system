@@ -28,4 +28,4 @@ class Config:
     REMEMBER_COOKIE_SAMESITE = "Lax"
     REMEMBER_COOKIE_SECURE = (ENV == "production")  
 
-    RATELIMIT_STORAGE_URI = "sqlite:///ratelimit.db"
+    RATELIMIT_STORAGE_URI = "memory://"
