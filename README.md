@@ -10,3 +10,5 @@ Features:
 - Secure configuration
 
 This project is inspired by the work I did during my internship.
+
+Project UI improvements added.
